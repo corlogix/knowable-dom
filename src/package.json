@@ -1,9 +1,8 @@
 {
   "name": "react-knowable",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  
   "scripts": {
     "build": "tsc"
   },
@@ -12,7 +11,7 @@
     "url": "git+https://github.com/corlogixco/react-knowable.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/corlogixco/react-knowable/issues"
   },
