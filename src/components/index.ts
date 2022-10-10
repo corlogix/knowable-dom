@@ -1,4 +1,5 @@
-const Test = {
-    package: "test"
-}
-export default Test;
+export * from "./types";
+
+import { defineKnowable } from "./knowable";
+
+export default defineKnowable;
