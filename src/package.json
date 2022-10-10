@@ -1,0 +1,21 @@
+{
+  "name": "react-knowable",
+  "version": "0.0.1",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corlogixco/react-knowable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/corlogixco/react-knowable/issues"
+  },
+  "homepage": "https://github.com/corlogixco/react-knowable#readme"
+  
+}
