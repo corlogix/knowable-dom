@@ -1,0 +1,31 @@
+{
+  "name": "react-knowable",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corlogixco/react-knowable.git"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/corlogixco/react-knowable/issues"
+  },
+  "homepage": "https://github.com/corlogixco/react-knowable#readme",
+  "dependencies": {
+    "lodash.camelcase": "4.3.0",
+    "lodash.kebabcase": "4.1.1",
+    "nanoid": "4.0.0"
+  },
+  "devDependencies": {
+    "@types/lodash.camelcase": "4.3.7",
+    "@types/lodash.kebabcase": "4.1.7"
+  }
+}
