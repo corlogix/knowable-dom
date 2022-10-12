@@ -1,6 +1,6 @@
-![alt text](https://github.com/corlogix/knowable-dom/blob/main/docs/knowable-dom.jpg?raw=true)
+![knowable-dom](https://github.com/corlogix/knowable-dom/blob/main/docs/knowabledom.jpg?raw=true)
 
-## React-Knowable (Project Root)
+## Knowable DOM (Project Root)
 
 [Source code README](./src/README.md)
 
