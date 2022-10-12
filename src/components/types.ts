@@ -4,6 +4,7 @@ export type Config = {
     onCapture?: (event: Event) => string;
     
     apiPath?: string;
+    batchDelay?: number;
     
     tracking: {
         clicks?: boolean;
@@ -11,15 +12,18 @@ export type Config = {
         errors?: boolean;
     } | boolean;
 
+    debug?: boolean;
+
     customized?: {
         labelElementType?: (target: HTMLElement) => string;
-        applyClickState?: (target: Element) => State;
+        applyClickState?: (target: HTMLElement) => State;
+        autoSection?: (target: HTMLElement) => Event["sections"];
     }
 }
 
 export type Event = {
     sessionId?: string;
-    timestamp?: string;
+    timestamp?: number;
     
     page?: string;
     sections?: Record<string, boolean>;
@@ -54,11 +58,10 @@ export type State = {
     element?: HTMLElement | undefined;
 }
 
-export type Unsubscriber = () => void;
+export type Unsubscriber = (() => void) | null;
 
 export type TrackingOptions = {
     onCapture?: (event: Event) => void;
     onError?: (e: Error) => void;
     config?: Config;
-    trackedTarget?: HTMLElement;
 }

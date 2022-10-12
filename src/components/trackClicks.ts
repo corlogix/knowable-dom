@@ -1,15 +1,13 @@
 import kebabCase from "lodash.kebabcase";
 import { enhanceEvent } from "./enhanceEvents";
-import { Config, Event, State, Unsubscriber } from "./types"
+import { State, TrackingOptions, Unsubscriber } from "./types"
 
-type ClickOptions = {
-    onCapture?: (event: Event) => void;
-    onError?: (e: Error) => void;
-    config?: Config;
-    trackedTarget?: HTMLElement;
-}
+export function trackClicks({ onCapture, onError, config }: TrackingOptions): Unsubscriber {
 
-export function trackClicks({ onCapture = console.info as any, onError = console.error, trackedTarget = document.body, config }: ClickOptions): Unsubscriber {
+    const trackedTarget: HTMLElement = document.body;
+
+    config?.debug && console.log("Tracking 'click' events on", trackedTarget)
+
     const listener = (e: any) => {
         try {
             let target = e.target as HTMLElement;
@@ -19,22 +17,24 @@ export function trackClicks({ onCapture = console.info as any, onError = console
                 element: undefined
             };
 
+            config?.debug && console.log("Clicked on", target);
+
             while (target instanceof SVGElement) {
                 target = target.parentElement as HTMLElement;
             }
 
             if(!(e.screenX === 0 && e.screenY === 0)) {
-                for (let element = target; element !== trackedTarget; element === element.parentElement) {
+                for (let element = target; element !== trackedTarget; element = element.parentElement as HTMLElement) {
                     const className = element.className;
-
+                    
                     const isLink = element.nodeName === "A" && typeof element.getAttribute("href") === "string";
-                    const isButton = element.nodeName === "BUTTON" && element.onclick;
+                    const isButton = element.nodeName === "BUTTON" || element.onclick;
 
                     if(!state.event && (isLink || isButton)) {
 
                         const tag = element.nodeName.toLowerCase();
 
-                        const elementType = config?.customized?.labelElementType?.(element) ?? tag;
+                        const elementType = config?.customized?.labelElementType?.(element) ?? tag === "a" ? "link" : tag;
 
                         state.event = {
                             eventType: "click",
@@ -42,7 +42,7 @@ export function trackClicks({ onCapture = console.info as any, onError = console
                             sections: {},
                             label: element.dataset.label || element.title || undefined,
                             field: (element as HTMLButtonElement).name || undefined,
-                        }
+                        };
 
                         state.autolabel = state.event.label;
                         state.element = element;
@@ -87,11 +87,11 @@ export function trackClicks({ onCapture = console.info as any, onError = console
                         break;
                     }
 
-                    if(enhanceEvent(state, element)) {
+                    if(enhanceEvent(state, element, config)) {
                         break;
                     }
                 }
-
+                
                 if(state.event) {
                     
                     if(state.event.label) {
@@ -111,12 +111,12 @@ export function trackClicks({ onCapture = console.info as any, onError = console
                             ) ?? className
                     }
 
-                    onCapture(state.event);
+                    onCapture?.(state.event);
                 }
             }
         }
         catch(e) {
-            onError(e as any);
+            onError?.(e as any);
         }
     };
 
