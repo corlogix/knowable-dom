@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/corlogixco/react-knowable/compare/knowable-dom@0.2.0...knowable-dom@0.2.1) (2022-10-12)
+
+
+### Bug Fixes
+
+* docs ([bb30e42](https://github.com/corlogixco/react-knowable/commit/bb30e421ea86734d09014ae082a52d0d17864ef2))
+* force publish ([d9eaf13](https://github.com/corlogixco/react-knowable/commit/d9eaf13e5838051406a10483ffc4983424cd6684))
+
+
+### Documentation
+
+* readme img ([fff2956](https://github.com/corlogixco/react-knowable/commit/fff295674d02217d3ecd7a607d538745efc293f1))
+* readme img ([716c730](https://github.com/corlogixco/react-knowable/commit/716c730766bab80e9de350d3cd4ed39091d70c69))
+
+
+
+
+
 ## 0.2.0 (2022-10-12)
 
 
